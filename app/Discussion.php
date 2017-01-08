@@ -12,4 +12,13 @@ class Discussion extends Model
      * @var array
      */
     protected $fillable = ['title','body','user_id','last_user_id'];
+
+    /**
+     * 通过一片帖子获取用户信息
+     * @return [array]
+     */
+    public function user()
+    {
+    	return $this->belongsTo(User::class);
+    }
 }
