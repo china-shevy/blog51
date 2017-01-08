@@ -1,0 +1,11 @@
+.navbar-wrap{
+	margin-bottom: 0;
+}
+.public-wrap .avatar-wrap .avatar{
+	width: 60px;
+	height: 60px;
+}
+.public-wrap .body-wrap{
+	width: 100%;
+}
+
