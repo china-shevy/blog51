@@ -45,7 +45,7 @@ class UsersController extends Controller
         // 保存用户数据
         \App\User::create(array_merge($request->all(),['avatar'=>'/images/default-avatar.png']));
         // 发生验证邮件
-        echo 
+
         // 重定向回首页
         return redirect('/');
     }

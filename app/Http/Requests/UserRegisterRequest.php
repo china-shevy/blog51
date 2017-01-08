@@ -25,7 +25,7 @@ class UserRegisterRequest extends Request
     {
         return [
             'name' => 'required|min:3',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:Users,email',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required|min:6',
         ];
