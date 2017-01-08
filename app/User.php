@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Mail;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -28,7 +29,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password','avatar'];
+    protected $fillable = ['name', 'email', 'password','avatar','confirm_code'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -45,4 +46,20 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany(Discussion::class); 
     }
+
+    /**
+     * 用户注册
+     * @param  array  $attributes [description]
+     * @return [type]             [description]
+     */
+    public static function register(array $attributes)
+    {
+        $user = static::create($attributes);
+
+        // 发送邮件
+        event(new Events\UserRegistered($user));
+
+        return $user;
+    }
+
 }
