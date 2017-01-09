@@ -24,8 +24,12 @@
             <li class="active"><a href="#">首页</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="./">登录</a></li>
+          @if (Auth::check())
+            <li><a href="/center">{{ Auth::user()->name }}</a></li>
+          @else
+            <li><a href="/user/login">登录</a></li>
             <li><a href="/user/register">注册</a></li>
+          @endif
           </ul>
         </div><!--/.nav-collapse -->
       </div>

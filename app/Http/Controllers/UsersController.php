@@ -52,7 +52,7 @@ class UsersController extends Controller
         User::register(array_merge($request->all(),$data));
 
         // 重定向回首页
-        return redirect('/');
+        return redirect('user/login');
     }
 
     /**
@@ -120,5 +120,31 @@ class UsersController extends Controller
 
         return redirect('user/login');
 
+    }
+
+    /**
+     * 登录页面
+     * @return [type] [description]
+     */
+    public function login()
+    {
+        return view('users.login');
+    }
+    /**
+     * 登录操作
+     * @param  Requests\UserLoginRequest $request [description]
+     * @return [type]                             [description]
+     */
+    public function signin(Requests\UserLoginRequest $request)
+    {
+
+        $loginPass = \Auth::attempt([
+            'email' => $request->get('email'),
+            'password' => $request->get('password'),
+            'is_confirmed' => 1,
+        ]);
+        if($loginPass) return redirect('/');
+        \Session::flash('user_login_failed','密码不正确或邮箱没验证');
+        return redirect('user/login')->withInput();
     }
 }
