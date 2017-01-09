@@ -35,7 +35,6 @@ class Mailer
             ]];
         $context = stream_context_create($options);
         
-        $res = file_get_contents($this->url, FILE_TEXT, $context);
-        dd($res);
+        file_get_contents($this->url, FILE_TEXT, $context);
     }
 }

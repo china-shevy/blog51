@@ -47,9 +47,11 @@ class UsersController extends Controller
         $data = [
             'avatar' => '/images/default-avatar.png',
             'confirm_code' => str_random(48),
+            'password' => bcrypt($request->get('password')),
         ];
-
-        User::register(array_merge($request->all(),$data));
+        $data = array_merge($request->all(),$data);
+        // dd($data);
+        User::register($data);
 
         // 重定向回首页
         return redirect('user/login');
