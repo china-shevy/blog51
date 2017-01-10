@@ -25,8 +25,8 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
           @if (Auth::check())
-            <li><a href="/center">{{ Auth::user()->name }}</a></li>
-            <li><a href="/user/logout">退出</a></li>
+            <li><a href="#">{{ Auth::user()->name }}</a></li>
+            <li><a href="/user/logout">退出登录</a></li>
           @else
             <li><a href="/user/login">登录</a></li>
             <li><a href="/user/register">注册</a></li>

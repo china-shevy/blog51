@@ -6,7 +6,7 @@
 		<div class="jumbotron">
 	      	<div class="container">
 	        	<h2>欢迎来到Phil Home社区
-	        		<a class="btn btn-lg btn-primary pull-right" href="../../components/#navbar" role="button">发布新的帖子</a>
+	        		<a class="btn btn-lg btn-primary pull-right" href="/discussions/create" role="button">发布新的帖子</a>
 	      		</h2>
 	      	</div>
 	    </div>

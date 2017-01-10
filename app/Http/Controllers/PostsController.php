@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
+use App\Markdown\Markdown;
+use Illuminate\Http\Request;
 use App\Discussion;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
 {
+    protected $markdown;
+
     public function __construct()
     {
         $this->middleware('auth',['only'=>['create','store','edit','update']]);
+        $this->markdown = new Markdown;
     }
     /**
      * Display a listing of the resource.
@@ -60,7 +64,8 @@ class PostsController extends Controller
     public function show($id)
     {
         $discussion = Discussion::findOrFail($id);
-        return view('forum.show',compact('discussion'));
+        $html = $this->markdown->markdown($discussion->body);
+        return view('forum.show',compact('discussion','html'));
     }
 
     /**
