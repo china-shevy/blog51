@@ -149,4 +149,14 @@ class UsersController extends Controller
         \Session::flash('user_login_failed','密码不正确或邮箱没验证');
         return redirect('user/login')->withInput();
     }
+
+    /**
+     * 退出登录
+     * @return [type] [description]
+     */
+    public function logout()
+    {
+        \Auth::logout();
+        return redirect('/');
+    }
 }
