@@ -9,10 +9,10 @@
 						<li class="list-group-item list-group-item-danger">{{ $error }}</li>
 					@endforeach
 				@endif
-				{!! Form::open(['url'=>'/discussions']) !!}
+				{!! Form::model($discussion,['method'=>'PATCH','url'=>'/discussions/'.$discussion->id]) !!}
 				@include('forum.form', ['id' => $discussion->id])
 				<div>
-					{!! Form::submit('发表帖子', ['class'=>'btn btn-primary pull-right']) !!}
+					{!! Form::submit('更新帖子', ['class'=>'btn btn-primary pull-right']) !!}
 				</div>
 			</div>
 		</div>
