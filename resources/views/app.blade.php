@@ -29,7 +29,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-                <li><a href=""><i class="fa fa-user"></i> 更换头像</a></li>
+                <li><a href="/user/avatar"><i class="fa fa-user"></i> 更换头像</a></li>
                 <li><a href=""><i class="fa fa-cog"></i> 更换密码</a></li>
                 <li><a href=""><i class="fa fa-heart"></i> 特别感谢</a></li>
                 <li role="separator" class="divider"></li>

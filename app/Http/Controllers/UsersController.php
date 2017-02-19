@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use Image;
 class UsersController extends Controller
 {
     public function register()
@@ -158,5 +158,37 @@ class UsersController extends Controller
     {
         \Auth::logout();
         return redirect('/');
+    }
+
+    /**
+     * 替换头像页面
+     * @return [type] [description]
+     */
+    public function avatar()
+    {
+        return view('users.avatar');
+    }
+
+    /**
+     * 保存头像
+     * @return [type] [description]
+     */
+    public function changeAvatar(Request $request)
+    {
+        // 保存图片
+        $file = $request->file('avatar');
+        $path = 'uploads/';
+        $filename = \Auth::user()->id.'_'.time().$file->getClientOriginalName();
+        $file->move($path, $filename);
+
+        // 修改图片尺寸为宽高200px
+        Image::make($path.$filename)->fit(200)->save();
+
+        // 更新数据
+        $user = User::find(\Auth::user()->id);
+        $user->avatar = '/'.$path.$filename;
+        $user->save();
+
+        return redirect('/user/avatar');
     }
 }
