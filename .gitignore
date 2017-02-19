@@ -5,3 +5,4 @@ Homestead.json
 .env
 .tags*
 .phpintel/*
+public/uploads

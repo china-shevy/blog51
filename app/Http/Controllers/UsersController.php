@@ -175,8 +175,23 @@ class UsersController extends Controller
      */
     public function changeAvatar(Request $request)
     {
-        // 保存图片
+        // 获取图片
         $file = $request->file('avatar');
+
+        // 验证上传是否成功
+        $input = [ 'image' => $file ];
+        $rules = [
+            'images' => 'image',
+        ];
+        $validator = \Validator::make($input,$rules);
+        if( $validator->fails() ) {
+            return response()->json([
+                'success' => false,
+                'errors'  => $validator->getMessageBag()->toArray(),
+            ]);
+        }
+
+        // 保存图片
         $path = 'uploads/';
         $filename = \Auth::user()->id.'_'.time().$file->getClientOriginalName();
         $file->move($path, $filename);
@@ -189,6 +204,10 @@ class UsersController extends Controller
         $user->avatar = '/'.$path.$filename;
         $user->save();
 
-        return redirect('/user/avatar');
+        return response()->json([
+            'success' => true,
+            'avatar'  => asset($path.$filename),
+        ]);
+
     }
 }
