@@ -49,7 +49,9 @@
 	background-color: #f8f8f8;
 	color: #5cb85c;
 }
-
+.list-wrap .media-heading{
+	margin-top: 10px;
+}
 .list-wrap .media-heading a{
 	color: #333;
 }
