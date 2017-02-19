@@ -20,11 +20,11 @@
 								<img class="media-object img-circle avatar" src="{{$discussion->user->avatar}}" alt="Image">
 							</a>
 							<div class="media-body">
-								<h4 class="media-heading"><a href="/discussions/{{ $discussion->id }}">{{$discussion->title}}</a></h4>
-								<p class="media-info author">{{$discussion->user->name}}</p>
+								<h4 class="media-heading"><a href="/discussions/{{ $discussion->id }}">{{ $discussion->title }}</a></h4>
+								<p class="media-info author">{{ $discussion->user->name }}</p>
 							</div>
 							<div class="media-reply-info">
-								<b class="reply-item reply-num">13</b>
+								<b class="reply-item reply-num">{{ count($discussion->comments) }}</b>
 								<span class="reply-item reply-info">回复</span>
 							</div>
 						</div>

@@ -63,7 +63,8 @@
 }
 .list-wrap .media-reply-info{
 	float: right;
-	margin-top: -52px;
+	margin-top: -50px;
+	text-align: center;
 }
 .list-wrap .media-body{
 	vertical-align: middle;
@@ -73,11 +74,9 @@
 }
 .list-wrap .media-reply-info .reply-num{
 	color: #333;
-	font-size: 14px;
-	margin-left: 3px;
+	font-size: 16px;
 }
 .list-wrap .media-reply-info .reply-info{
 	color: #999;
-	font-size: 12px;
-
+	font-size: 10px;
 }
