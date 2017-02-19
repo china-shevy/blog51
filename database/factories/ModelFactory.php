@@ -23,11 +23,21 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Discussion::class, function (Faker\Generator $faker) {
-	$userIdArr = \App\User::lists('id')->toArray();
+    $userIdArr = \App\User::lists('id')->toArray();
     return [
         'title' => $faker->sentence,
         'body' => $faker->paragraph,
         'user_id' => $faker->randomElement($userIdArr),
         'last_user_id' => $faker->randomElement($userIdArr)
+    ];
+});
+
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+    $userIdArr = \App\User::lists('id')->toArray();
+	$discussionIdArr = \App\Discussion::lists('id')->toArray();
+    return [
+        'body' => $faker->paragraph,
+        'user_id' => $faker->randomElement($userIdArr),
+        'discussion_id' => $faker->randomElement($discussionIdArr),
     ];
 });

@@ -25,9 +25,23 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9" role='main'>
+					{{-- 内容 --}}
 					<div class="blog-post">
 					{!! $html !!}
 		            </div>
+		            <hr>
+		            {{-- 评论 --}}
+		            @foreach ($discussion->comments as $comment)
+		            	<div class="media list-wrap">
+		            		<a class="pull-left avatar-wrap" href="#">
+		            			<img class="media-object img-circle avatar" src="{{ $comment->user->avatar }}">
+		            		</a>
+		            		<div class="media-body">
+		            			<h4 class="media-heading">{{ $comment->user->name }}</h4>
+		            			<p>{{ $comment->body }}</p>
+		            		</div>
+		            	</div>
+		            @endforeach
 				</div>
 			</div>
 		</div>

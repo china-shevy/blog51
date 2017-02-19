@@ -48,6 +48,15 @@ class User extends Model implements AuthenticatableContract,
     }
 
     /**
+     * 获取一个user的所有comment
+     * @return [type] [description]
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
      * 用户注册
      * @param  array  $attributes [description]
      * @return [type]             [description]

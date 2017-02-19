@@ -21,4 +21,14 @@ class Discussion extends Model
     {
     	return $this->belongsTo(User::class);
     }
+
+    /**
+     * 获取一个discussion的所有comments
+     * @return [type] [description]
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }
