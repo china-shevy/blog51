@@ -42,6 +42,18 @@
 		            		</div>
 		            	</div>
 		            @endforeach
+		            <hr>
+					@if (Auth::check())
+			            {!! Form::open(['url'=>'/comments']) !!}
+			            {!! Form::hidden('discussion_id', $discussion->id) !!}
+			            <div class="form-group">
+			            	{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+			            </div>
+			            {!! Form::submit('发表评论', ['class'=>'btn btn-success pull-right']) !!}
+			            {!! Form::close() !!}
+		            @else
+		            	<a href="/user/login" class="btn btn-success btn-block">登录参与评论</a>
+					@endif
 				</div>
 			</div>
 		</div>
