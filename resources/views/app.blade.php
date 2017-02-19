@@ -26,6 +26,7 @@
           <ul class="nav navbar-nav navbar-right">
           @if (Auth::check())
             <li><a href="#">{{ Auth::user()->name }}</a></li>
+            <li><a href="#" class="nav-avatar-info"><img src="{{ Auth::user()->avatar }}" class="img-circle" width="50"></a></li>
             <li><a href="/user/logout">退出登录</a></li>
           @else
             <li><a href="/user/login">登录</a></li>

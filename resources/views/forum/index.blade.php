@@ -3,10 +3,10 @@
 @section('content')
 	<div class="public-wrap index-wrap">
 		
-		<div class="jumbotron">
+		<div class="jumbotron banner">
 	      	<div class="container">
 	        	<h2>欢迎来到Phil Home社区
-	        		<a class="btn btn-lg btn-primary pull-right" href="/discussions/create" role="button">发布新的帖子</a>
+	        		<a class="btn btn-lg btn-warning pull-right" href="/discussions/create" role="button">发布新的帖子</a>
 	      		</h2>
 	      	</div>
 	    </div>
@@ -21,7 +21,11 @@
 							</a>
 							<div class="media-body">
 								<h4 class="media-heading"><a href="/discussions/{{ $discussion->id }}">{{$discussion->title}}</a></h4>
-								{{$discussion->user->name}}
+								<p class="media-info author">{{$discussion->user->name}}</p>
+							</div>
+							<div class="media-reply-info">
+								<b class="reply-item reply-num">13</b>
+								<span class="reply-item reply-info">回复</span>
 							</div>
 						</div>
 					@endforeach

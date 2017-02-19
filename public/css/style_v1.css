@@ -4,8 +4,60 @@
 .public-wrap .avatar-wrap .avatar{
 	width: 60px;
 	height: 60px;
+	border: 1px solid #efefef;
 }
 .public-wrap .body-wrap{
 	width: 100%;
 }
+.index-wrap .banner {
+	color: #FFF;
+	background-color: #81C26C;
+}
+.navbar-wrap .navbar-brand{
+	height: 70px;
+	padding-top: 35px;
+	padding-bottom: 35px;
+}
+.navbar-wrap .navbar-nav > li > a{
+	padding-top: 35px;
+	padding-bottom: 35px;	
+}
 
+.navbar-wrap.navbar-default .navbar-nav > .active > a, .navbar-wrap.navbar-default .navbar-nav > .active > a:hover, .navbar-wrap.navbar-default .navbar-nav > .active > a:focus{
+	background-color: #f8f8f8;
+	color: #5cb85c;
+}
+.navbar-wrap.navbar-wrap .navbar-nav > li > a.nav-avatar-info{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.list-wrap .media-heading a{
+	color: #333;
+}
+.list-wrap .media-heading a:hover{
+	color: #5cb85c;
+}
+.list-wrap .author{
+	color: #666;
+}
+.list-wrap .media-reply-info{
+	float: right;
+	margin-top: -52px;
+}
+.list-wrap .media-body{
+	vertical-align: middle;
+}
+.list-wrap .media-reply-info .reply-item {
+	display: block;
+}
+.list-wrap .media-reply-info .reply-num{
+	color: #333;
+	font-size: 14px;
+	margin-left: 3px;
+}
+.list-wrap .media-reply-info .reply-info{
+	color: #999;
+	font-size: 12px;
+
+}
