@@ -197,17 +197,35 @@ class UsersController extends Controller
         $file->move($path, $filename);
 
         // 修改图片尺寸为宽高200px
-        Image::make($path.$filename)->fit(200)->save();
-
-        // 更新数据
-        $user = User::find(\Auth::user()->id);
-        $user->avatar = '/'.$path.$filename;
-        $user->save();
+        Image::make($path.$filename)->fit(400)->save();
 
         return response()->json([
             'success' => true,
-            'avatar'  => asset($path.$filename),
+            'avatar'  => '/'.$path.$filename,
         ]);
 
+    }
+
+    /**
+     * 裁剪，保存头像
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function cropAvatar(Request $request)
+    {
+        $photo = $request->get('photo');
+        $width = (int) $request->get('w');
+        $height = (int) $request->get('h');
+        $xAlign = (int) $request->get('x');
+        $yAlign = (int) $request->get('y');
+
+        Image::make(mb_strcut($photo,1))->crop($width,$height,$xAlign,$yAlign)->save();
+
+        // 更新数据
+        $user = User::find(\Auth::user()->id);
+        $user->avatar = $photo;
+        $user->save();
+
+        return redirect('user/avatar');
     }
 }

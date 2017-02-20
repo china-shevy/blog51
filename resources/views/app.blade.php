@@ -6,7 +6,8 @@
 	<title>Blog</title>
   <link href="/css/bootstrap.css" rel="stylesheet">
 	<link href="/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/css/style_v1.css" rel="stylesheet">
+  <link href="/css/style_v1.css" rel="stylesheet">
+	<link href="/css/jquery.Jcrop.css" rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top navbar-wrap" role="navigation">
@@ -50,5 +51,6 @@
 <script src="/js/jquery-3.1.1.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.form.js"></script>
+<script src="/js/jquery.Jcrop.js"></script>
 <script src="/js/avatar.js"></script>
 </html>
