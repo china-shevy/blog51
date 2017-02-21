@@ -31,7 +31,7 @@ function showResponse(response)  {
     } else {
         var cropBox = $("#cropbox");
         cropBox.attr('src',response.avatar);
-        $('#photo').val(response.avatar);
+        $('#photo').val(response.image);
         $('#upload-avatar').html('更换新头像');
         $('#exampleModal').modal('show');
         cropBox.Jcrop({

@@ -201,7 +201,8 @@ class UsersController extends Controller
 
         return response()->json([
             'success' => true,
-            'avatar'  => '/'.$path.$filename,
+            'avatar'  => asset($path.$filename),
+            'image'  => $path.$filename,
         ]);
 
     }
@@ -219,11 +220,11 @@ class UsersController extends Controller
         $xAlign = (int) $request->get('x');
         $yAlign = (int) $request->get('y');
 
-        Image::make(mb_strcut($photo,1))->crop($width,$height,$xAlign,$yAlign)->save();
+        Image::make($photo)->crop($width,$height,$xAlign,$yAlign)->save();
 
         // 更新数据
         $user = User::find(\Auth::user()->id);
-        $user->avatar = $photo;
+        $user->avatar = asset($photo);
         $user->save();
 
         return redirect('user/avatar');
