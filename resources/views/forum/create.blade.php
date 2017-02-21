@@ -1,19 +1,21 @@
 @extends('app')
 
 @section('content')
+	@include('editor::head')
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2" role='main'>
+			<div class="col-md-10 col-md-offset-1" role='main'>
 				@if ($errors->any())
 					@foreach ($errors->all() as $error)
 						<li class="list-group-item list-group-item-danger">{{ $error }}</li>
 					@endforeach
 				@endif
 				{!! Form::open(['url'=>'/discussions']) !!}
-				@include('forum.form', ['id' => $discussion->id])
-				<div>
-					{!! Form::submit('发表帖子', ['class'=>'btn btn-primary pull-right']) !!}
-				</div>
+					@include('forum.form')
+					<div>
+						{!! Form::submit('发表帖子', ['class'=>'btn btn-primary pull-right']) !!}
+					</div>
+				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>

@@ -16,6 +16,7 @@ Route::resource('discussions','PostsController');
 Route::resource('comments','CommentsController');
 
 
+Route::post('/discussions/upload','PostsController@upload');
 Route::get('/user/register','UsersController@register');
 Route::get('/user/login','UsersController@login');
 Route::get('/verify/{confirm_code}','UsersController@confirmEmail');
