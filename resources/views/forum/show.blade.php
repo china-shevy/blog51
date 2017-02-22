@@ -94,7 +94,7 @@
 					postData.body = comment.body;
 
 					// 提交服务器
-					this.$http.post('/comments', postData,  {emulateJSON: true}).then(res => {
+					this.$http.post('/comments', postData).then(res => {
 						this.comments.push(comment); // 异步加载数据
 					});
 					// 置空textarea
