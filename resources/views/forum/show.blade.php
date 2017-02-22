@@ -24,7 +24,7 @@
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-md-9" role='main'>
+				<div class="col-md-9" role='main' id="post">
 					{{-- 内容 --}}
 					<div class="blog-post">
 					{!! $html !!}
@@ -42,12 +42,21 @@
 		            		</div>
 		            	</div>
 		            @endforeach
+		            <div class="media list-wrap" v-for="comment in comments">
+		            	<a class="pull-left avatar-wrap" href="#">
+		            		<img class="media-object img-circle avatar" :src='comment.avatar'>
+		            	</a>
+		            	<div class="media-body">
+		            		<h4 class="media-heading">@{{ comment.name }}</h4>
+		            		<p>@{{ comment.body }}</p>
+		            	</div>
+		            </div>
 		            <hr>
 					@if (Auth::check())
-			            {!! Form::open(['url'=>'/comments']) !!}
+			            {!! Form::open(['url'=>'/comments','v-on:submit'=>'onSubmitForm']) !!}
 			            {!! Form::hidden('discussion_id', $discussion->id) !!}
 			            <div class="form-group">
-			            	{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+			            	{!! Form::textarea('body', null, ['class'=>'form-control','v-model'=>"newComment.body"]) !!}
 			            </div>
 			            {!! Form::submit('发表评论', ['class'=>'btn btn-success pull-right']) !!}
 			            {!! Form::close() !!}
@@ -59,5 +68,43 @@
 		</div>
 
 	</div>
+	
+	<script>
+		Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
+		new Vue({
+			el:'#post',
+			data:{
+				comments:[],
+				newComment:{
+					name:'{{Auth::user()->name}}',
+					avatar:'{{Auth::user()->avatar}}',
+					body:''
+				},
+				newPost:{
+					discussion_id:'{{$discussion->id}}',
+					user_id:'{{Auth::user()->id}}',
+					body:'',
+				}
+			},
+			methods:{
+				onSubmitForm:function(e){
+					e.preventDefault();
+					var comment = this.newComment,
+						postData = this.newPost;
+					postData.body = comment.body;
 
+					// 提交服务器
+					this.$http.post('/comments', postData,  {emulateJSON: true}).then(res => {
+						this.comments.push(comment); // 异步加载数据
+					});
+					// 置空textarea
+					this.newComment = {
+						name:'{{Auth::user()->name}}',
+						avatar:'{{Auth::user()->avatar}}',
+						body:''
+					};
+				}
+			}
+		})
+	</script>
 @stop()

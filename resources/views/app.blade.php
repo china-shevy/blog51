@@ -15,6 +15,7 @@
   <script src="/js/avatar.js"></script>
   <script src="/js/vue.js"></script>
   <script src="/js/vue-resource.js"></script>
+  <meta id="token" name="token" value="{{ csrf_token() }}">
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top navbar-wrap" role="navigation">

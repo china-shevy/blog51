@@ -41,7 +41,10 @@ class CommentsController extends Controller
     {
         Comment::create(array_merge($request->all(),['user_id'=>\Auth::user()->id]));
 
-        return redirect()->action('PostsController@show',['id'=>$request->get('discussion_id')]);
+        // return redirect()->action('PostsController@show',['id'=>$request->get('discussion_id')]);
+        return response()->json([
+            'success' => true,
+        ]);
     }
 
     /**
