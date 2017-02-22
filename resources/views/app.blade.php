@@ -13,6 +13,8 @@
   <script src="/js/jquery.form.js"></script>
   <script src="/js/jquery.Jcrop.js"></script>
   <script src="/js/avatar.js"></script>
+  <script src="/js/vue.js"></script>
+  <script src="/js/vue-resource.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-static-top navbar-wrap" role="navigation">
