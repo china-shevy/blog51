@@ -42,6 +42,7 @@
 		            		</div>
 		            	</div>
 		            @endforeach
+		            @if (Auth::check())
 		            <div class="media list-wrap" v-for="comment in comments">
 		            	<a class="pull-left avatar-wrap" href="#">
 		            		<img class="media-object img-circle avatar" :src='comment.avatar'>
@@ -51,6 +52,7 @@
 		            		<p>@{{ comment.body }}</p>
 		            	</div>
 		            </div>
+		            @endif
 		            <hr>
 					@if (Auth::check())
 			            {!! Form::open(['url'=>'/comments','v-on:submit'=>'onSubmitForm']) !!}
@@ -68,7 +70,7 @@
 		</div>
 
 	</div>
-	
+    @if (Auth::check())
 	<script>
 		Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('value');
 		new Vue({
@@ -107,4 +109,5 @@
 			}
 		})
 	</script>
+	@endif
 @stop()
